@@ -70,7 +70,11 @@ const FormikUserForm = withFormik({
         name: Yup.string().required(),
         email: Yup.string().email().required(),
         password: Yup.string().required(),
-        role: Yup.string().required()
+        role: Yup.string().oneOf(["Front-End", "Back-End", "Full-Stack"])
+            .required("Please choose one!")
+
+            .oneOf(["omnivore", "carnivore", "herbivore"])
+            .required("Please choose one!")
     }),
 
     handleSubmit(values, { setStatus }) {
